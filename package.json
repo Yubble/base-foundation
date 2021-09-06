@@ -1,0 +1,14 @@
+{
+  "name": "base-foundation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Yubble/base-foundation.git",
+  "author": "liuyanbao <liuyanbao@shuidi-inc.com>",
+  "license": "MIT",
+  "scripts": {
+    "initBus": "node bin/init"
+  },
+  "devDependencies": {
+    "inquirer": "^8.1.2"
+  }
+}
