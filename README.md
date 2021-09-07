@@ -9,9 +9,11 @@
 
 增加子模块
 git remote add sub1 git@github.com:Yubble/submodule1.git
+git fetch sub1
+git subtree add -P src sub1/main
 
-
-git submodule add --force git@github.com:Yubble/submodule2.git src
+提交子模块
+git subtree push -P src sub1/main
 
 删除子模块
 git submodule deinit -f src
