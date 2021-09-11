@@ -19,6 +19,7 @@ git subtree add -P src sub2/main
 
 提交子模块
 git subtree push -P src sub1/main
+git subtree push -P src sub2/main
 
 删除子模块
 git submodule deinit -f src
