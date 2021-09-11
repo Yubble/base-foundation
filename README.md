@@ -17,9 +17,12 @@ git fetch sub2
 git subtree add -P src sub1/main
 git subtree add -P src sub2/main
 
+提交本次代码到上线仓库
+git remote set-url origin git@github.com:Yubble/sub1Entire.git
+
 提交子模块
-git subtree push -P src sub1/main
-git subtree push -P src sub2/main
+git subtree push --prefix=src sub1 main
+git subtree push --prefix=src sub2 main
 
 删除子模块
 rm -rf src
