@@ -22,6 +22,4 @@ git subtree push -P src sub1/main
 git subtree push -P src sub2/main
 
 删除子模块
-git submodule deinit -f src
-git rm --cached src
 rm -rf src
