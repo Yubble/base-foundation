@@ -6,17 +6,31 @@
  */
 
 const inquirer = require('inquirer')
-const execSync = require('child_process').execSync
-
-// 首先清空当前子仓库
-execSync('git submodule deinit -f src')
+const ora = require('ora')
+const spawnSync = require('child_process').spawnSync
 
 // 确定要开发的业务内容
-// const { subject } = await inquirer.prompt([
-//     {
-//         name: 'subject',
-//         message: '请选择要开发的模块',
-//         type: 'list',
-//         choices: ['业务线1', '业务线2']
-//     }
-// ])
+const runInit = async () => {
+    const { subject } = await inquirer.prompt([
+        {
+            name: 'subject',
+            message: 'Have U ever used Rock substrate',
+            type: 'list',
+            choices: ['Y', 'N']
+        }
+    ])
+
+    if (subject === 'Y') {
+        ora(`请继续使用`).info()
+        return
+    }
+    
+    const spinner = ora(`本地子仓库初始化中`).start()
+    const res = spawnSync('git', ['remote', 'add', 'sub1', 'git@github.com:Yubble/submodule1.git'])
+    // spinner.succeed('子仓库远端链接初始化完成')
+    if (res.stderr.length) {
+        spinner.fail(res.stderr.toString())
+    }
+}
+
+runInit()
