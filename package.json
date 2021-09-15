@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "initRemote": "node bin/init",
-    "fetchSub": "node bin/fetchSub"
+    "fetchSub": "node bin/fetchSub",
+    "push": "node bin/push"
   },
   "devDependencies": {
     "inquirer": "^8.1.2"

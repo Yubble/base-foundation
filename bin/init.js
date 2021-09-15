@@ -9,11 +9,6 @@ const inquirer = require('inquirer')
 const ora = require('ora')
 const { spawnSync, execSync } = require('child_process')
 
-// 展示当前已绑定的远端仓库列表
-const showRemoteList = () => {
-    execSync('git remote -v')
-}
-
 // 确定要开发的业务内容
 const runInit = async () => {
     const { subject } = await inquirer.prompt([
@@ -36,13 +31,17 @@ const runInit = async () => {
 
     if (res1.stderr.length) {
         spinner.fail(res1.stderr.toString())
+        execSync('git remote -v')
         return
     }
     if (res2.stderr.length) {
         spinner.fail(res2.stderr.toString())
+        execSync('git remote -v')
         return
     }
     spinner.succeed('子仓库远端链接初始化完成')
+    // 展示当前已绑定的远端仓库列表
+    execSync('git remote -v')
 }
 
 runInit()
