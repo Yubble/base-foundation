@@ -7,8 +7,10 @@
 
  const inquirer = require('inquirer')
  const { execSync } = require('child_process')
+ const fs = require('fs')
+ const path = require('path')
 
-const runFetchSub = async () => {
+ const runFetchSub = async () => {
     const { subject } = await inquirer.prompt([
         {
             name: 'subject',
@@ -18,14 +20,19 @@ const runFetchSub = async () => {
         }
     ])
 
-    console.log('--- subject is ---', subject)
-
-    // 首先删除开发src
-    execSync(`rm -rf src`)
+    // 首先检测是否有src文件目录
+    const srcExist = fs.existsSync(path.join(__dirname, '../src'))
+    console.log('---- 是否已经存在 ----', srcExist)
+    // 如果不存在，则说明用户是第一次使用基座
+    // 如果存在，先删除src文件夹
+    if (srcExist) {
+        execSync(`rm -rf src`)
+    }
     // 拉取线上代码到当前缓存区
     execSync(`git fetch ${subject}`)
     // 创建src并将子仓库内容拉取进去
     execSync(`git subtree add -P src ${subject}/main`)
+    // if (srcExist) {}
     // subtree会创建一次commit，需要整体提交一次，否则切换子仓库会失败
     // execSync('git add .')
     // execSync('git commit -m "切换子仓库"')
