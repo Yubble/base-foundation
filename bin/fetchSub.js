@@ -9,7 +9,6 @@
  const { execSync } = require('child_process')
  const fs = require('fs')
  const path = require('path')
- global.curSub = ''
 
  const runFetchSub = async () => {
     const { subject } = await inquirer.prompt([
@@ -29,6 +28,8 @@
         execSync(`rm -rf src`)
         execSync('git add .')
         execSync('git commit -m "切换子仓库"')
+        // 删掉缓存文件
+        execSync(`rm -rf cache.txt`)
     }
     // 拉取线上代码到当前缓存区
     execSync(`git fetch ${subject}`)
@@ -36,6 +37,10 @@
     execSync(`git subtree add -P src ${subject}/main`)
     // subtree会创建一次commit，需要整体提交一次，否则切换子仓库会失败
     execSync('git push')
+    // 记录当前拉入的子仓库是哪个
+    fs.writeFile(path.join(__dirname, './cacheSub.txt'), subject, err => {
+        console.log('err is ', err)
+    })
 }
 
 runFetchSub()
