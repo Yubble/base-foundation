@@ -6,14 +6,28 @@
  **/
 const path = require('path')
 const fs = require('fs')
+const inquirer = require('inquirer')
 const { execSync } = require('child_process')
 const enumSub = require('../constant/enumSub')
 
-// 读取当前文件
-const subName = fs.readFileSync(path.join(__dirname, '../sub.cac'), 'utf-8')
+const pushFn = async () => {
+    const { branch } = await inquirer.prompt([
+        {
+            name: 'branch',
+            message: '请问要发到哪个分支呢',
+            type: 'input',
+            default: 'master'
+        }
+    ])
 
-execSync(`git remote set-url origin ${enumSub[subName].onlineAddr}`)
+    // 读取当前文件
+    const subName = fs.readFileSync(path.join(__dirname, '../sub.cac'), 'utf-8')
 
-execSync(`git add .`)
-execSync(`git commit -m '提交代码'`)
-execSync(`git push`)
+    execSync(`git remote set-url origin ${enumSub[subName].onlineAddr}`)
+
+    execSync(`git add .`)
+    execSync(`git commit -m '提交代码'`)
+    execSync(`git push -u origin :${branch}`)
+}
+
+pushFn()
