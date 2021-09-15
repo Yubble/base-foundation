@@ -38,7 +38,7 @@
     // subtree会创建一次commit，需要整体提交一次，否则切换子仓库会失败
     execSync('git push')
     // 记录当前拉入的子仓库是哪个
-    fs.writeFile(path.join(__dirname, './cacheSub.txt'), subject, err => {
+    fs.writeFile(path.join(__dirname, '../cacheSub.txt'), subject, err => {
         console.log('err is ', err)
     })
 }
