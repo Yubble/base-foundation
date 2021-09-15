@@ -27,9 +27,9 @@ const runFetchSub = async () => {
     // 创建src并将子仓库内容拉取进去
     execSync(`git subtree add -P src ${subject}/main`)
     // subtree会创建一次commit，需要整体提交一次，否则切换子仓库会失败
-    execSync('git add .')
-    execSync('git commit -m "切换子仓库"')
-    execSync('git push')
+    // execSync('git add .')
+    // execSync('git commit -m "切换子仓库"')
+    // execSync('git push')
 }
 
 runFetchSub()
