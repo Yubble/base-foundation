@@ -26,3 +26,9 @@ git subtree push --prefix=src sub2 main
 
 删除子模块
 rm -rf src
+
+查看已绑定的远端仓库
+git remote -v
+
+删除远端地址
+git remote rm origin

@@ -6,7 +6,8 @@
   "author": "liuyanbao <liuyanbao@shuidi-inc.com>",
   "license": "MIT",
   "scripts": {
-    "initBus": "node bin/init"
+    "initRemote": "node bin/init",
+    "fetchSub": "node bin/fetchSub"
   },
   "devDependencies": {
     "inquirer": "^8.1.2"
