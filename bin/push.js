@@ -8,8 +8,7 @@ const path = require('path')
 const fs = require('fs')
 
 // 读取当前文件
-fs.readFile(path.join(__dirname, '../sub.cac'), 'utf-8', (err, data) => {
-    if (err) console.log('----- err is -----', err)
+const subName = fs.readFileSync(path.join(__dirname, '../sub.cac'), 'utf-8')
 
-    console.log('------- data is --------', data)
-})
+console.log('subName is ', subName)
+
