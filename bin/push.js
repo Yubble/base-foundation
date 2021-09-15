@@ -4,8 +4,12 @@
  * @Author: 刘燕保
  * @Date: 2021-09-15 16:32:54
  **/
+const path = require('path')
+const fs = require('fs')
 
-const curSub = global.curSub
+// 读取当前文件
+fs.readFile(path.join(__dirname, '../cacheSub.txt'), 'utf-8', (err, data) => {
+    if (err) console.log('----- err is -----', err)
 
-
-console.log('----- curSub is -----', curSub)
+    console.log('------- data is --------', data)
+})
