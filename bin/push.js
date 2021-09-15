@@ -27,7 +27,7 @@ const pushFn = async () => {
 
     execSync(`git add .`)
     execSync(`git commit -m '提交代码'`)
-    execSync(`git push -u origin :${branch}`)
+    execSync(`git push -u origin master:${branch}`)
 }
 
 pushFn()
