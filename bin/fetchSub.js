@@ -32,11 +32,12 @@
     execSync(`git fetch ${subject}`)
     // 创建src并将子仓库内容拉取进去
     execSync(`git subtree add -P src ${subject}/main`)
-    // if (srcExist) {}
+    if (srcExist) {
+        execSync('git add .')
+        execSync('git commit -m "切换子仓库"')
+    }
     // subtree会创建一次commit，需要整体提交一次，否则切换子仓库会失败
-    // execSync('git add .')
-    // execSync('git commit -m "切换子仓库"')
-    // execSync('git push')
+    execSync('git push')
 }
 
 runFetchSub()
