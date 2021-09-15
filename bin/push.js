@@ -8,7 +8,7 @@ const path = require('path')
 const fs = require('fs')
 
 // 读取当前文件
-fs.readFile(path.join(__dirname, '../cacheSub.txt'), 'utf-8', (err, data) => {
+fs.readFile(path.join(__dirname, '../sub.cac'), 'utf-8', (err, data) => {
     if (err) console.log('----- err is -----', err)
 
     console.log('------- data is --------', data)
