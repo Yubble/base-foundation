@@ -1,0 +1,8 @@
+{
+    "sub1": {
+        "onlineAddr": "git@github.com:Yubble/sub1Entire.git"
+    },
+    "sub2": {
+        "onlineAddr": "git@github.com:Yubble/sub2Entire.git"
+    }
+}
