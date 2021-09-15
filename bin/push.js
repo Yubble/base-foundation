@@ -12,6 +12,8 @@ const enumSub = require('../constant/enumSub')
 // 读取当前文件
 const subName = fs.readFileSync(path.join(__dirname, '../sub.cac'), 'utf-8')
 
-console.log('subName is ', subName)
-
 execSync(`git remote set-url origin ${enumSub[subName].onlineAddr}`)
+
+execSync(`git add .`)
+execSync(`git commit -m '提交代码'`)
+execSync(`git push`)
