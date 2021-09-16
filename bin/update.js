@@ -23,7 +23,10 @@ const doUpdate = async () => {
     }
 
     execSync(`rm -rf src`)
+    execSync(`rm -rf sub.cac`)
     execSync(`git remote set-url origin git@github.com:Yubble/base-foundation.git`)
+    execSync(`git add .`)
+    execSync(`git commit -m '更新基座'`)
     execSync(`git push -u origin master:master`)
 }
 
