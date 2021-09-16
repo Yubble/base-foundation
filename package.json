@@ -8,7 +8,8 @@
   "scripts": {
     "init-sub": "node bin/init",
     "fetch-sub": "node bin/fetch",
-    "push-sub": "node bin/push"
+    "push-sub": "node bin/push",
+    "update-found": "node bin/update"
   },
   "devDependencies": {
     "inquirer": "^8.1.2"

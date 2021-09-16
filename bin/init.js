@@ -11,16 +11,15 @@ const { spawnSync, execSync } = require('child_process')
 
 // 确定要开发的业务内容
 const runInit = async () => {
-    const { subject } = await inquirer.prompt([
+    const { flag } = await inquirer.prompt([
         {
             name: 'subject',
             message: 'Have U ever used Rock substrate',
-            type: 'list',
-            choices: ['Y', 'N']
+            type: 'confirm'
         }
     ])
 
-    if (subject === 'Y') {
+    if (flag) {
         ora(`请继续使用`).info()
         return
     }

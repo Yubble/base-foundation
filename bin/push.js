@@ -36,6 +36,9 @@ const pushFn = async () => {
     execSync(`git add .`)
     execSync(`git commit -m '提交代码'`)
     execSync(`git push -u origin master:${branch}`)
+
+    // 将业务子仓库提交至远端
+    execSync(`git subtree push --prefix=src ${subName} main`)
 }
 
 pushFn()
