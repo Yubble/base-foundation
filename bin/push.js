@@ -6,6 +6,7 @@
  **/
 const path = require('path')
 const fs = require('fs')
+const ora = require('ora')
 const inquirer = require('inquirer')
 const { execSync } = require('child_process')
 const enumSub = require('../constant/enumSub')
@@ -19,6 +20,13 @@ const pushFn = async () => {
             default: 'master'
         }
     ])
+
+    const branchStandard = branch === 'master' ? 0 : branch.search('bedin-')
+
+    if (branchStandard !== 0) {
+        ora('请使用bedin-开头的名称为分支').fail()
+        return
+    }
 
     // 读取当前文件
     const subName = fs.readFileSync(path.join(__dirname, '../sub.cac'), 'utf-8')

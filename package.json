@@ -6,9 +6,9 @@
   "author": "liuyanbao <liuyanbao@shuidi-inc.com>",
   "license": "MIT",
   "scripts": {
-    "initRemote": "node bin/init",
-    "fetchSub": "node bin/fetchSub",
-    "push": "node bin/push"
+    "init-sub": "node bin/init",
+    "fetch-sub": "node bin/fetch",
+    "push-sub": "node bin/push"
   },
   "devDependencies": {
     "inquirer": "^8.1.2"
