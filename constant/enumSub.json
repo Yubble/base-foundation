@@ -4,5 +4,6 @@
     },
     "sub2": {
         "onlineAddr": "git@github.com:Yubble/sub2Entire.git"
-    }
+    },
+    "sub3": 123
 }
